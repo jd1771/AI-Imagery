@@ -10,7 +10,7 @@ const FormField = ({
 }) => {
   return (
     <div>
-      <div className="flex items-center gap-2 mb-2">
+      <div className="mb-2 flex items-center gap-2">
         <label
           htmlFor={name}
           className="block text-sm font-medium text-gray-900"
@@ -22,7 +22,7 @@ const FormField = ({
         type={type}
         id={name}
         name={name}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#6469ff] outline-none block w-full p-3"
+        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 outline-none focus:border-[#6469ff] focus:ring-[#6469ff]"
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
