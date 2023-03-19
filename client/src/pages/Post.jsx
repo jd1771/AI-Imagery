@@ -19,6 +19,32 @@ const Post = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (form.prompt && form.photo) {
+      setLoading(true);
+
+      try {
+        const response = await fetch(`http://localhost:8080/api/posts`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+
+        await response.json();
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert("please enter a prompt and generate an image");
+    }
+  };
+
   const generateImg = async () => {
     if (form.prompt) {
       try {
@@ -113,6 +139,7 @@ const Post = () => {
           </p>
           <button
             type="submit"
+            onClick={handleFormSubmit}
             className="mt-3 w-auto rounded-md bg-[#6469ff] px-5 py-2.5 text-center text-sm font-medium text-white"
           >
             {loading ? "Sharing..." : "Share"}
