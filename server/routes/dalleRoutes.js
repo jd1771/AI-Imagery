@@ -15,7 +15,6 @@ const openai = new OpenAIApi(configuration);
 router.route("/").post(async (req, res) => {
   try {
     const { prompt } = req.body;
-    console.log(req.body);
     const response = await openai.createImage({
       prompt,
       n: 1,

@@ -20,6 +20,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
   const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+  const [searchTimeout, setSearchTimeout] = useState(null);
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -47,6 +49,23 @@ const Home = () => {
     fetchPosts();
   }, []);
 
+  const handleSearchChange = (e) => {
+    clearTimeout(searchTimeout); // Clear any previously set timeouts
+    setSearchText(e.target.value);
+
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = allPosts.filter(
+          (post) =>
+            post.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            post.prompt.toLowerCase().includes(searchText.toLowerCase())
+        );
+
+        setSearchResults(searchResult);
+      }, 500)
+    );
+  };
+
   return (
     <section className="mx-auto mt-16 max-w-7xl">
       <div>
@@ -60,7 +79,13 @@ const Home = () => {
       </div>
 
       <div className="mt-16">
-        <FormField />
+        <FormField
+          type="text"
+          name="text"
+          value={searchText}
+          placeholder={"Search posts"}
+          handleChange={handleSearchChange}
+        />
       </div>
 
       <div className="mt-16">
@@ -79,7 +104,10 @@ const Home = () => {
 
             <div className="sm:grid-col-2 grid gap-3 lg:grid-cols-4">
               {searchText ? (
-                <RenderCards data={allPosts} title="No search results found" />
+                <RenderCards
+                  data={searchResults}
+                  title="No search results found"
+                />
               ) : (
                 <RenderCards data={allPosts} title="No posts found" />
               )}

@@ -36,6 +36,7 @@ const Post = () => {
         await response.json();
         navigate("/");
       } catch (error) {
+        console.log(error);
         alert(error);
       } finally {
         setLoading(false);
