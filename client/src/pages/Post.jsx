@@ -25,13 +25,16 @@ const Post = () => {
       setLoading(true);
 
       try {
-        const response = await fetch(`http://localhost:8080/api/posts`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        });
+        const response = await fetch(
+          `https://ai-imagery-4gzw.onrender.com/api/posts`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+          }
+        );
 
         await response.json();
         navigate("/");
@@ -50,13 +53,16 @@ const Post = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch(`http://localhost:8080/api/dalle`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt: form.prompt }),
-        });
+        const response = await fetch(
+          `https://ai-imagery-4gzw.onrender.com/api/dalle`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prompt: form.prompt }),
+          }
+        );
 
         const data = await response.json();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
