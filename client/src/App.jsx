@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import logo from "./assets/logo.png";
+import logo from "./assets/banner.jpg";
 
 import CreatePost from "./pages/Post";
 import Home from "./pages/Home";
@@ -11,7 +11,7 @@ const App = () => {
     <BrowserRouter>
       <header className="flex w-full items-center justify-between border-b border-b-[#e6ebf4] bg-white px-4 py-4 sm:px-8">
         <Link to="/">
-          <img src={logo} alt="logo" className="w-12 object-contain" />
+          <img src={logo} alt="logo" className="w-[175px] object-contain" />
         </Link>
 
         <Link
