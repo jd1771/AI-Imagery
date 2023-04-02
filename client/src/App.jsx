@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import banner from "./assets/banner.jpg";
+import logo from "./assets/logo.png";
 
 import CreatePost from "./pages/Post";
 import Home from "./pages/Home";
@@ -10,8 +10,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <header className="flex w-full items-center justify-between border-b border-b-[#e6ebf4] bg-white px-4 py-4 sm:px-8">
-        <Link to="/AI-Imagery">
-          <img src={banner} alt="banner" className="w-[175px] object-contain" />
+        <Link
+          to="/AI-Imagery"
+          className="flex items-center justify-center border-2 "
+        >
+          <img src={logo} alt="logo" className="w-[100px]" />
+          <span className="ml-2 text-2xl font-extrabold text-[#222328]">
+            Imagery
+          </span>
         </Link>
 
         <Link

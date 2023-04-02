@@ -37,7 +37,7 @@ const Post = () => {
         );
 
         await response.json();
-        navigate("/");
+        navigate("/AI-Imagery");
       } catch (error) {
         console.log(error);
         alert(error);
