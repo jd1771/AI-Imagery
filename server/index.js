@@ -7,18 +7,25 @@ import dalleRoutes from "./routes/dalleRoutes.js";
 
 dotenv.config();
 
+// Load the express app
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
+// Routes
 app.use("/api/posts", postRoutes);
 app.use("/api/dalle", dalleRoutes);
 
+// Default test route
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+/*
+ * Simple function used to Start the server
+ */
 const startServer = async () => {
   try {
     connectDB(process.env.MONGO_URl);
@@ -30,4 +37,5 @@ const startServer = async () => {
   }
 };
 
+// Start the server
 startServer();

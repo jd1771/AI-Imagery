@@ -6,6 +6,9 @@ import logo from "./assets/logo.png";
 import CreatePost from "./pages/Post";
 import Home from "./pages/Home";
 
+/*
+ * App component that renders Navbar and Routes
+ */
 const App = () => {
   return (
     <BrowserRouter>

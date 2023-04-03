@@ -4,6 +4,9 @@ import Loader from "../components/Loader";
 import Card from "../components/Card";
 import FormField from "../components/FormField";
 
+/*
+ * Render cards component to render all posts
+ */
 const RenderCards = ({ data, title }) => {
   // Return cards if posts is not empty
   if (data && data.length > 0) {
@@ -16,6 +19,9 @@ const RenderCards = ({ data, title }) => {
   );
 };
 
+/*
+ * Home component to render all posts
+ */
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
@@ -23,6 +29,9 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
+  /*
+   * Fetch all posts from the API endpoint
+   */
   const fetchPosts = async () => {
     setLoading(true);
 
@@ -48,10 +57,16 @@ const Home = () => {
     }
   };
 
+  /*
+   * Use effect hook is used to fetch all  posts on page load
+   */
   useEffect(() => {
     fetchPosts();
   }, []);
 
+  /*
+   * Handle search input change
+   */
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout); // Clear any previously set timeouts
     setSearchText(e.target.value);

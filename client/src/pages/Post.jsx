@@ -5,6 +5,10 @@ import Loader from "../components/Loader";
 import FormField from "../components/FormField";
 import preview from "../assets/preview.png";
 
+/*
+ * Post page where the user can create a new post
+ * to share with the world
+ */
 const Post = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -15,10 +19,21 @@ const Post = () => {
     photo: "",
   });
 
+  /*
+   * Function that is used Handle
+   * changes that the user makes to the form
+   */
   const handleFormChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  /*
+   * Handle form submit.
+   * This function will be called when the user clicks on the submit button
+   * It will send a POST request to the API endpoint with the form data
+   * If the request is successful, it will redirect the user to the home page
+   * If the request fails, it will display an error message
+   */
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (form.prompt && form.photo) {
@@ -49,6 +64,11 @@ const Post = () => {
     }
   };
 
+  /*
+   * Generate an image using the prompt entered by the user
+   * This function will be called when the user clicks on the generate image button
+   * It will send a POST request to the API endpoint with the prompt
+   */
   const generateImg = async () => {
     if (form.prompt) {
       try {

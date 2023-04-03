@@ -1,5 +1,8 @@
 import React from "react";
 
+/*
+ * FormField component to render a single form field
+ */
 const FormField = ({
   labelName,
   type,

@@ -3,10 +3,16 @@ import { AiOutlineCloudDownload } from "react-icons/Ai";
 import { BsFillPersonFill } from "react-icons/Bs";
 import FileSaver from "file-saver";
 
+/*
+ * Card component to render a single card
+ */
 const handleImageDownload = (id, link) => {
   FileSaver.saveAs(link, `image-${id}.jpg`);
 };
 
+/*
+ * Card component to render a single card
+ */
 const Card = ({ _id, name, prompt, photo }) => {
   return (
     <div className="shadow-card h over:shadow-cardhover card group relative rounded-xl">

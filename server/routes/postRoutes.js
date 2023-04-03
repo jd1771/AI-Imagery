@@ -13,6 +13,9 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET,
 });
 
+/*
+ * Route used to fetch all posts
+ */
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.find({});
@@ -25,6 +28,9 @@ router.get("/", async (req, res) => {
   }
 });
 
+/*
+ * Route used to create a new post
+ */
 router.post("/", async (req, res) => {
   try {
     const { name, prompt, photo } = req.body;

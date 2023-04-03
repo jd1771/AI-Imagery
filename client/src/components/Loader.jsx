@@ -1,5 +1,11 @@
 import React from "react";
 
+/*
+ * This is a simple loader component that
+ * gets deployed when content is being loaded
+ * from the server.
+ *
+ */
 const Loader = () => (
   <div role="status">
     <svg

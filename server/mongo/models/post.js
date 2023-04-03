@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+/*
+ * Schema used to model a Post object
+ */
 const Post = new mongoose.Schema({
   name: {
     type: String,

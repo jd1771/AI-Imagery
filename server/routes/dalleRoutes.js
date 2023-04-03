@@ -6,12 +6,17 @@ dotenv.config();
 
 const router = express.Router();
 
+// Create a new OpenAI API instance
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
 
+/*
+ * Route used to create a new
+ * AI generated image
+ */
 router.route("/").post(async (req, res) => {
   try {
     const { prompt } = req.body;
